@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/10/30 11:55:28 by osarsari         ###   ########.fr        #
+#    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
+#    Updated: 2023/08/19 11:45:08 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ================================= VARIABLES ================================ #
+# ================================ VARIABLES ================================= #
 
 # The name of the executable
-NAME	= pipex
+NAME	= libft.a
 
 # Compiler and compiling flags
 CC	= gcc
@@ -25,24 +25,68 @@ CFLAGS	+= -g3 -fsanitize=address
 endif
 
 # Folder names
-SRCDIR	= src/
-INCDIR	= includes/
+# SRCDIR	= src/
+# INCDIR	= includes/
 OBJDIR	= obj/
-LIB_DIR	= $(SRCDIR)lib/
 
 # Add include folders
-CFLAGS	+= -I $(INCDIR) -I $(LIB_DIR)
+# CFLAGS	+=
 
 # Linking stage flags
-LDFLAGS = -L $(LIB_DIR) -lft
+# LDFLAGS =
 
 # List of source files (add your *.c files here)
 
 SRCS =\
-	$(SRCDIR)pipex.c \
+	ft_atoi.c\
+	ft_bzero.c\
+	ft_calloc.c\
+	ft_isalnum.c\
+	ft_isalpha.c\
+	ft_isascii.c\
+	ft_isdigit.c\
+	ft_isprint.c\
+	ft_itoa.c\
+	ft_lstadd_back_bonus.c\
+	ft_lstadd_front_bonus.c\
+	ft_lstclear_bonus.c\
+	ft_lstdelone_bonus.c\
+	ft_lstiter_bonus.c\
+	ft_lstlast_bonus.c\
+	ft_lstmap_bonus.c\
+	ft_lstnew_bonus.c\
+	ft_lstsize_bonus.c\
+	ft_memchr.c\
+	ft_memcmp.c\
+	ft_memcpy.c\
+	ft_memmove.c\
+	ft_memset.c\
+	ft_printchar.c\
+	ft_printf.c\
+	ft_printnbr.c\
+	ft_putchar_fd.c\
+	ft_putendl_fd.c\
+	ft_putnbr_fd.c\
+	ft_putstr_fd.c\
+	ft_split.c\
+	ft_strchr.c\
+	ft_strdup.c\
+	ft_striteri.c\
+	ft_strjoin.c\
+	ft_strlcat.c\
+	ft_strlcpy.c\
+	ft_strlen.c\
+	ft_strmapi.c\
+	ft_strncmp.c\
+	ft_strnstr.c\
+	ft_strrchr.c\
+	ft_strtrim.c\
+	ft_substr.c\
+	ft_tolower.c\
+	ft_toupper.c\
 
 HEADERS =\
-	$(INCDIR)libft.h \
+	libft.h\
 
 # String manipulation magic
 SRC		:= $(notdir $(SRCS))
@@ -57,7 +101,7 @@ CY	= \033[36;1m
 RC	= \033[0m
 
 # Implicit rules
-VPATH := $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
+# VPATH := $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
 
 # ================================== RULES =================================== #
 
@@ -74,22 +118,17 @@ $(OBJDIR)%.o : %.c $(HEADERS)
 
 
 # Linking
-$(NAME): $(OBJS) $(LIB_DIR)libft.a
-	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRCS)$(RC)\n"
-	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
-	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGS)] &&&\n--- $(NAME)$(RC)\n"
-
-$(LIB_DIR)libft.a:
-	@make -C $(LIB_DIR)
+$(NAME): $(OBJS)
+	@printf "$(GR)=== Archiving $(NAME) ===$(RC)\n"
+	@ar rcs $(NAME) $(OBJS)
+	@printf "$(YE)=== $(NAME) created ===$(RC)\n"
 
 # Cleaning
 clean :
-	@make -C $(LIB_DIR) clean
 	@printf "$(RE)--- Removing $(OBJDIR)$(RC)\n"
 	@rm -rf $(OBJDIR)
 
 fclean : clean
-	@make -C $(LIB_DIR) fclean
 	@printf "$(RE)--- Removing $(NAME)$(RC)\n"
 	@rm -f $(NAME)
 
@@ -97,14 +136,9 @@ fclean : clean
 re : fclean all
 
 # This runs the program
-run : $(NAME)
-	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
-	./$(NAME) $(MAP)
-
-# Special rule to check if files conform to the norm
-norm :
-	@printf "$(CY)=== Checking norm ===$(RC)\n"
-	@norminette $(SRCDIR) $(HEADERS)
+# run : $(NAME)
+# 	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
+# 	./$(NAME)
 
 # This specifies the rules that does not correspond to any filename
-.PHONY: all run clean fclean re $(LIBFT) norm
+.PHONY	= all run clean fclean re
