@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:58:05 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:08 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:29:32 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Concatenates two strings s1 and s2 into a newly allocated string.

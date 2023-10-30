@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:56:01 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:40:35 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:28:04 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Counts the number of nodes in a list.

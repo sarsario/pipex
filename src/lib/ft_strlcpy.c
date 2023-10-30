@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:13:13 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:17 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:29:41 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Copies at most 'dstsize - 1' characters from the string 'src' to 'dst',

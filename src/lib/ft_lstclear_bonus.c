@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:17:52 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:40:13 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:32 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Deletes and frees the given node and every successor of that node, using

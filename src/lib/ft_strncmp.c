@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:29:53 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:29 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:29:55 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Compares the first n characters of two null-terminated strings s1 and s2.

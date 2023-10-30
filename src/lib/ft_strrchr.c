@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:41:16 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:36 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:30:03 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Searches for the last occurrence of character c (converted to a char) in the

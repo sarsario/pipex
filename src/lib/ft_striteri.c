@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:41:43 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:03 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:29:28 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Applies the function 'f' to each character of the string 's'.

@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:09:00 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:40:25 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:49 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Returns the last node of the list.

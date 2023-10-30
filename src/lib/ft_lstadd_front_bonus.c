@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:36:03 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:40:00 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:28 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Adds the node `new` at the beginning of the list.

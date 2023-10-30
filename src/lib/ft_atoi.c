@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:07:09 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:39:10 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:26:23 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** The converted integer value. Behavior undefined if the the integer > INT_MAX
 */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 int	ft_atoi(const char *str)
 {

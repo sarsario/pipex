@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:10:25 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:13 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:29:36 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Copies the string `src` to the end of `dst` with a size limit of `dstsize`.

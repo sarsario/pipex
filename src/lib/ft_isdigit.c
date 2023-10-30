@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:25:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:39:46 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:08 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Checks if the given character is a digit.

@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:46:07 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:48 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:30:17 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Converts the given uppercase letter to its corresponding lowercase letter.

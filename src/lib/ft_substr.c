@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:00:46 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:45 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:30:13 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Returns a substring from the given string 's' starting at the index 'start'

@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:36:15 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 13:36:14 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:31:02 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex.h"
 
 t_cmd	*build_cmd(int argc, char **argv, char **envp)
 {
@@ -20,7 +20,7 @@ t_cmd	*build_cmd(int argc, char **argv, char **envp)
 	if (!cmds)
 		return (NULL);
 	cmds->next = malloc(sizeof(t_cmd));
-	if (!cmds.next)
+	if (!cmds->next)
 		return (free(cmds), NULL);
 	cmds->redir_in = ft_split(argv[2], ' ');
 	cmds->redir_out = NULL;

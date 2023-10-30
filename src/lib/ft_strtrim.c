@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:59:02 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:41 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:30:08 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Trims leading and trailing characters specified in set from a string s1,

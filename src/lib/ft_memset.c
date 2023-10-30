@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:49:04 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:40:52 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:28:25 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Sets the first 'len' bytes of the memory area pointed to by 'b' to the value

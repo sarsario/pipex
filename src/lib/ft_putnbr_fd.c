@@ -6,11 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:36:18 by osarsari          #+#    #+#             */
-/*   Updated: 2023/10/30 11:41:39 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:28:55 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../includes/libft.h"
 
 /*
 ** Outputs the integer `n` to the given file descriptor `fd`.
