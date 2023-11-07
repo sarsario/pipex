@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 09:43:08 by osarsari         ###   ########.fr       */
+/*   Created: 2023/11/07 12:43:17 by osarsari          #+#    #+#             */
+/*   Updated: 2023/11/07 13:48:29 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "../bonus_includes/pipex_bonus.h"
 
-# define PIPEX_H
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
-
-typedef struct s_cmd
+int	main(int argc, char **argv, char **envp)
 {
-	struct s_cmd	*next;
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	char			**envp;
-}					t_cmd;
+	t_lstcmd	*lst;
 
-void	free_array(char **array);
-void	free_cmds(t_cmd *cmds);
-char	*append_path(char *cmd, char **env);
-
-#endif
+	if (argc < 5)
+	{
+		errno = EINVAL;
+		perror("pipex");
+		return (1);
+	}
+	lst = parse_args(argc, argv, envp);
+	return (exec_lst(lst));
+}

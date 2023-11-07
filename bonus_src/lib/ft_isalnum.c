@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 09:43:08 by osarsari         ###   ########.fr       */
+/*   Created: 2023/04/08 16:26:11 by osarsari          #+#    #+#             */
+/*   Updated: 2023/10/30 15:26:43 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "../../includes/libft.h"
 
-# define PIPEX_H
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
+/*
+** Check if the given character is alphanumeric.
+**
+** c:	The character to be checked
+**
+** Return:
+** Non-zero value if the character is alphanumeric, 0 otherwise.
+*/
 
-typedef struct s_cmd
+int	ft_isalnum(int c)
 {
-	struct s_cmd	*next;
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	char			**envp;
-}					t_cmd;
-
-void	free_array(char **array);
-void	free_cmds(t_cmd *cmds);
-char	*append_path(char *cmd, char **env);
-
-#endif
+	return (ft_isalpha(c) || ft_isdigit(c));
+}

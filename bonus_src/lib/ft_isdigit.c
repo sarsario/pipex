@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 09:43:08 by osarsari         ###   ########.fr       */
+/*   Created: 2023/04/08 16:25:21 by osarsari          #+#    #+#             */
+/*   Updated: 2023/10/30 15:27:08 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "../../includes/libft.h"
 
-# define PIPEX_H
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
+/*
+** Checks if the given character is a digit.
+** A digit is a character that represents a number from 0 to 9.
+**
+** c:	The character to be checked.
+**
+** Returns:
+** Non-zero value if the character is a digit, 0 otherwise.
+*/
 
-typedef struct s_cmd
+int	ft_isdigit(int c)
 {
-	struct s_cmd	*next;
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	char			**envp;
-}					t_cmd;
-
-void	free_array(char **array);
-void	free_cmds(t_cmd *cmds);
-char	*append_path(char *cmd, char **env);
-
-#endif
+	return (c >= '0' && c <= '9');
+}

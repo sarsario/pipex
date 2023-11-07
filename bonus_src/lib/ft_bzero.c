@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 09:43:08 by osarsari         ###   ########.fr       */
+/*   Created: 2023/04/08 16:10:01 by osarsari          #+#    #+#             */
+/*   Updated: 2023/10/30 15:26:31 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+/*
+** Set `n` bytes of memory starting at address `s` to zero.
+**
+** s:	A pointer to the memory area to zero out.
+** n:	The number of bytes to zero out.
+*/
 
-# define PIPEX_H
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
+#include "../../includes/libft.h"
 
-typedef struct s_cmd
+void	ft_bzero(void *s, size_t n)
 {
-	struct s_cmd	*next;
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	char			**envp;
-}					t_cmd;
+	unsigned char	*ptr;
 
-void	free_array(char **array);
-void	free_cmds(t_cmd *cmds);
-char	*append_path(char *cmd, char **env);
-
-#endif
+	if (n == 0)
+		return ;
+	ptr = (unsigned char *)s;
+	while (n--)
+		*ptr++ = 0;
+}

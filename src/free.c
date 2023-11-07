@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 09:43:08 by osarsari         ###   ########.fr       */
+/*   Created: 2023/11/06 11:30:39 by osarsari          #+#    #+#             */
+/*   Updated: 2023/11/06 11:33:26 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "../includes/pipex.h"
 
-# define PIPEX_H
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
-
-typedef struct s_cmd
+void	free_array(char **array)
 {
-	struct s_cmd	*next;
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	char			**envp;
-}					t_cmd;
+	int	i;
 
-void	free_array(char **array);
-void	free_cmds(t_cmd *cmds);
-char	*append_path(char *cmd, char **env);
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
 
-#endif
+void	free_cmds(t_cmd *cmds)
+{
+	t_cmd	*tmp;
+
+	while (cmds)
+	{
+		tmp = cmds;
+		cmds = cmds->next;
+		free_array(tmp->redir_in);
+		free_array(tmp->redir_out);
+		free_array(tmp->args);
+		free(tmp);
+	}
+}

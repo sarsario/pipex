@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2023/11/06 11:22:20 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/07 12:47:14 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 
 # Folder names
 SRCDIR	= ./
-INCDIR	= ../../includes/
+INCDIR	= ../../bonus_includes/
 OBJDIR	= obj/
 
 # Add include folders
