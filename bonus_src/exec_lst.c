@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:54:14 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 15:08:23 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 08:29:42 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,53 +48,81 @@ int	**prep_pipe(int nb)
 	return (pipes);
 }
 
+
+// if (i == 0)
+// {
+// 	j = 0;
+// 	while (j < nb)
+// 	{
+// 		close(pipes[j][0]); // close read end of all pipes
+// 		if (i != j)
+// 			close(pipes[j][1]); // close write end of all pipes except the first one
+// 		j++;
+// 	}
+// }
+// else if (i == nb + 1)
+// {
+// 	j = 0;
+// 	while (j < nb)
+// 	{
+// 		close(pipes[j][1]); // close write end of all pipes
+// 		if (i != j + 1)
+// 			close(pipes[j][0]); // close read end of all pipes except the last one
+// 		j++;
+// 	}
+// }
+// else
+// {
+// 	j = 0;
+// 	while (j < nb)
+// 	{
+// 		if (i == j - 1)
+// 			close(pipes[j][1]); // close write end of the previous pipe
+// 		else if (i == j)
+// 			close(pipes[j][0]); // close read end of the current pipe
+// 		else
+// 		{
+// 			close(pipes[j][0]); // close read end of all other pipes
+// 			close(pipes[j][1]); // close write end of all other pipes
+// 		}
+// 		j++;
+// 	}
+// }
 void	close_unused(int **pipes, int i, int nb)
 {
 	int	j;
 
-	if (i == 0)
-	{
-		j = 0;
-		while (j < nb)
-		{
-			close(pipes[j][0]); // close read end of all pipes
-			if (i != j)
-				close(pipes[j][1]); // close write end of all pipes except the first one
-			j++;
-		}
-	}
-	else if (i == nb + 1)
-	{
-		j = 0;
-		while (j < nb)
-		{
-			close(pipes[j][1]); // close write end of all pipes
-			if (i != j + 1)
-				close(pipes[j][0]); // close read end of all pipes except the last one
-			j++;
-		}
-	}
-	else
-	{
-		j = 0;
-		while (j < nb)
-		{
-			if (i == j - 1)
-				close(pipes[j][1]); // close write end of the previous pipe
-			else if (i == j)
-				close(pipes[j][0]); // close read end of the current pipe
-			else
-			{
-				close(pipes[j][0]); // close read end of all other pipes
-				close(pipes[j][1]); // close write end of all other pipes
-			}
-			j++;
-		}
+	j = 0;
+	while (j < nb) {
+		if ((i == 0 && j != 0) || (i == nb + 1 && j != nb - 1) || \
+			(i != 0 && i != nb + 1 && (j == i - 1 || j == i)))
+			close(pipes[j][0]);
+		if ((i == 0 && j != 0) || (i == nb + 1 && j != nb - 1) || \
+			(i != 0 && i != nb + 1 && (j == i || j == i - 1)))
+			close(pipes[j][1]);
+		j++;
 	}
 }
 
 int	child_exec(t_lstcmd *lst, int **pipes, int i, int nb)
 {
+	int	fd_in;
+	int	fd_out;
+
+	close_unused(pipes, i, nb);
+	if (i == 0)
+		fd_in = open(lst->cmd->redir_in[0], O_RDONLY);
+	else
+		fd_in = pipes[i - 1][0];
+	if (i == nb - 1)
+		fd_out = open(lst->cmd->redir_out[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	else
+		fd_out = pipes[i][1];
+	if (fd_in == -1 || fd_out == -1)
+	{
+		perror("child_exec");
+		return (1);
+	}
 }
 
 void	close_pipes(int **pipes, int nb)

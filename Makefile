@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/07 15:10:45 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/08 08:54:21 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ SRCDIR	= src/
 INCDIR	= includes/
 OBJDIR	= obj/
 LIB_DIR	= $(SRCDIR)lib/
-SRCBONUS = bonus_src/
+SRCBONUSDIR = bonus_src/
 INCDIRBONUS = bonus_includes/
 OBJDIRBONUS = bonus_obj/
-LIB_DIRBONUS = $(SRCBONUS)lib/
+LIB_DIRBONUS = $(SRCBONUSDIR)lib/
 
 # Add include folders
 CFLAGS	+= -I $(INCDIR) -I $(LIB_DIR)
@@ -49,9 +49,9 @@ SRCS =\
 	$(SRCDIR)find_cmd.c \
 
 SRCSBONUS =\
-	$(SRCBONUS)pipex_bonus.c \
-	$(SRCBONUS)parse_args.c \
-	$(SRCBONUS)exec_lst.c \
+	$(SRCBONUSDIR)pipex_bonus.c \
+	$(SRCBONUSDIR)parse_args.c \
+	$(SRCBONUSDIR)exec_lst.c \
 
 HEADERS =\
 	$(INCDIR)libft.h \
@@ -77,8 +77,8 @@ CY	= \033[36;1m
 RC	= \033[0m
 
 # Implicit rules
-VPATH		:= $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
-VPATHBONUS	:= $(SRCBONUS) $(OBJDIRBONUS) $(shell find $(SRCBONUS) -type d)
+VPATH :=	$(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)\
+			$(SRCBONUSDIR) $(OBJDIRBONUS) $(shell find $(SRCBONUSDIR) -type d)
 
 # ================================== RULES =================================== #
 
@@ -158,7 +158,7 @@ norm :
 
 normbonus :
 	@printf "$(CY)=== Checking norm ===$(RC)\n"
-	@norminette $(SRCBONUS) $(HEADERSBONUS)
+	@norminette $(SRCBONUSDIR) $(HEADERSBONUS)
 
 # This specifies the rules that does not correspond to any filename
 .PHONY: all run clean fclean re $(LIBFT) norm bonus cleanbonus fcleanbonus rebonus normbonus
