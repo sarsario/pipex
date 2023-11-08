@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:54:14 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 08:29:42 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:26:14 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,9 @@ void	close_unused(int **pipes, int i, int nb)
 
 int	child_exec(t_lstcmd *lst, int **pipes, int i, int nb)
 {
-	int	fd_in;
-	int	fd_out;
+	int		fd_in;
+	int		fd_out;
+	char	*cmd_path;
 
 	close_unused(pipes, i, nb);
 	if (i == 0)
@@ -115,7 +116,8 @@ int	child_exec(t_lstcmd *lst, int **pipes, int i, int nb)
 	else
 		fd_in = pipes[i - 1][0];
 	if (i == nb - 1)
-		fd_out = open(lst->cmd->redir_out[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		fd_out = open(lst->cmd->redir_out[0],
+			O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
 		fd_out = pipes[i][1];
 	if (fd_in == -1 || fd_out == -1)
@@ -123,6 +125,23 @@ int	child_exec(t_lstcmd *lst, int **pipes, int i, int nb)
 		perror("child_exec");
 		return (1);
 	}
+	if (i == 0)
+		dup2(fd_in, 0);
+	else
+		dup2(pipes[i - 1][0], 0);
+	if (i == nb - 1)
+		dup2(fd_out, 1);
+	else
+		dup2(pipes[i][1], 1);
+	cmd_path = append_path(lst->cmd->cmd[0], lst->cmd->envp);
+	if (!cmd_path)
+		return (1);
+	if (execve(cmd_path, lst->cmd->cmd, lst->cmd->envp) == -1)
+	{
+		perror("child_exec");
+		return (1);
+	}
+	return (0);
 }
 
 void	close_pipes(int **pipes, int nb)

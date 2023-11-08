@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:43:17 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 13:48:29 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:57:18 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	}
 	lst = parse_args(argc, argv, envp);
-	return (exec_lst(lst));
+	int res = exec_lst(lst);
+	ft_printf("exec_lst returned %d\n", res);
+	free_lst(lst);
+	return (res);
 }

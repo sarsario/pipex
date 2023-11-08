@@ -6,13 +6,13 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:03:48 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/07 13:47:18 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:27:53 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../bonus_includes/pipex_bonus.h"
 
-t_lstcmd	*first_cmd(int argc, char **argv, char **envp)
+t_lstcmd	*first_cmd(char **argv, char **envp)
 {
 	t_lstcmd	*lst;
 	t_cmd		*cmd;
@@ -76,7 +76,7 @@ t_lstcmd	*parse_args(int argc, char **argv, char **envp)
 	t_lstcmd	*lst;
 	int			i;
 
-	lst = first_cmd(argc, argv, envp);
+	lst = first_cmd(argv, envp);
 	i = 3;
 	while (i < argc - 3)
 		add_back(&lst, argv[i++], envp);

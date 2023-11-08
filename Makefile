@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/08 08:54:21 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/08 09:56:31 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ BONUS	= pipex_bonus
 # Compiler and compiling flags
 CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra
+CFLAGSBONUS	= -Wall -Werror -Wextra
 
 # Debug, use with`make DEBUG=1`
 ifeq ($(DEBUG),1)
@@ -37,9 +38,11 @@ LIB_DIRBONUS = $(SRCBONUSDIR)lib/
 
 # Add include folders
 CFLAGS	+= -I $(INCDIR) -I $(LIB_DIR)
+CFLAGSBONUS	+= -I $(INCDIRBONUS) -I $(LIB_DIRBONUS)
 
 # Linking stage flags
 LDFLAGS = -L $(LIB_DIR) -lft
+LDFLAGSBONUS = -L $(LIB_DIRBONUS) -lft
 
 # List of source files (add your *.c files here)
 
@@ -49,9 +52,11 @@ SRCS =\
 	$(SRCDIR)find_cmd.c \
 
 SRCSBONUS =\
-	$(SRCBONUSDIR)pipex_bonus.c \
+	$(SRCBONUSDIR)free.c \
 	$(SRCBONUSDIR)parse_args.c \
+	$(SRCBONUSDIR)find_cmd.c \
 	$(SRCBONUSDIR)exec_lst.c \
+	$(SRCBONUSDIR)pipex_bonus.c \
 
 HEADERS =\
 	$(INCDIR)libft.h \
@@ -101,7 +106,7 @@ $(OBJDIR)%.o : %.c $(HEADERS)
 $(OBJDIRBONUS)%.o : %.c $(HEADERSBONUS)
 	@mkdir -p $(OBJDIRBONUS)
 	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGSBONUS) -c $< -o $@
 
 # Linking
 $(NAME): $(OBJS) $(LIB_DIR)libft.a
@@ -110,9 +115,9 @@ $(NAME): $(OBJS) $(LIB_DIR)libft.a
 	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGS)] &&&\n--- $(NAME)$(RC)\n"
 
 $(BONUS): $(OBJSBONUS) $(LIB_DIRBONUS)libft.a
-	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRCSBONUS)$(RC)\n"
-	@$(CC) $(CFLAGS) $(OBJSBONUS) $(LDFLAGS) -o $(BONUS)
-	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGS)] &&&\n--- $(BONUS)$(RC)\n"
+	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGSBONUS)] ===\n--- $(SRCSBONUS)$(RC)\n"
+	@$(CC) $(CFLAGSBONUS) $(OBJSBONUS) $(LDFLAGSBONUS) -o $(BONUS)
+	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGSBONUS)] &&&\n--- $(BONUS)$(RC)\n"
 
 $(LIB_DIR)libft.a:
 	@make -C $(LIB_DIR)
