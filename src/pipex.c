@@ -6,39 +6,11 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:36:15 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 14:51:30 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:54:05 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
-t_cmd	*build_cmd(char **argv, char **envp)
-{
-	t_cmd	*cmds;
-
-	cmds = malloc(sizeof(t_cmd));
-	if (!cmds)
-	{
-		errno = ENOMEM;
-		return (NULL);
-	}
-	cmds->next = malloc(sizeof(t_cmd));
-	if (!cmds->next)
-	{
-		free(cmds);
-		errno = ENOMEM;
-		return (NULL);
-	}
-	cmds->redir_in = ft_split(argv[1], ' ');
-	cmds->redir_out = NULL;
-	cmds->args = ft_split(argv[2], ' ');
-	cmds->envp = envp;
-	cmds->next->redir_in = NULL;
-	cmds->next->redir_out = ft_split(argv[4], ' ');
-	cmds->next->args = ft_split(argv[3], ' ');
-	cmds->next->envp = envp;
-	return (cmds);
-}
 
 int	main(int argc, char **argv, char **envp)
 {

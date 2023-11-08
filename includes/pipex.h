@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:43:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 14:51:53 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:54:21 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		**mass_pipe(int n);
 int		fork_twice(t_cmd *cmds, int** pipefd);
 int		child1_exec(t_cmd *cmd, int **pipefd);
 int		child2_exec(t_cmd *cmd, int **pipefd);
+t_cmd	*build_cmd(char **argv, char **envp);
 
 #endif
