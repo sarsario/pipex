@@ -6,11 +6,24 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:43:17 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 09:57:18 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:50:40 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../bonus_includes/pipex_bonus.h"
+
+void	free_lst(t_lstcmd *lst)
+{
+	t_lstcmd	*tmp;
+
+	while (lst)
+	{
+		tmp = lst;
+		lst = lst->next;
+		free_cmds(tmp->cmd);
+		free(tmp);
+	}
+}
 
 int	main(int argc, char **argv, char **envp)
 {

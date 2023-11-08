@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/08 09:56:31 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/08 14:52:07 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ SRCS =\
 	$(SRCDIR)pipex.c \
 	$(SRCDIR)free.c \
 	$(SRCDIR)find_cmd.c \
+	$(SRCDIR)mass_pipe.c \
+	$(SRCDIR)mass_fork.c \
+	$(SRCDIR)exec_ve.c \
 
 SRCSBONUS =\
 	$(SRCBONUSDIR)free.c \
@@ -82,8 +85,7 @@ CY	= \033[36;1m
 RC	= \033[0m
 
 # Implicit rules
-VPATH :=	$(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)\
-			$(SRCBONUSDIR) $(OBJDIRBONUS) $(shell find $(SRCBONUSDIR) -type d)
+VPATH :=	$(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
 
 # ================================== RULES =================================== #
 
