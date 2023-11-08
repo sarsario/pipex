@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/08 14:52:07 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/08 18:49:45 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,10 @@
 
 # The name of the executable
 NAME	= pipex
-BONUS	= pipex_bonus
 
 # Compiler and compiling flags
 CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra
-CFLAGSBONUS	= -Wall -Werror -Wextra
 
 # Debug, use with`make DEBUG=1`
 ifeq ($(DEBUG),1)
@@ -31,18 +29,12 @@ SRCDIR	= src/
 INCDIR	= includes/
 OBJDIR	= obj/
 LIB_DIR	= $(SRCDIR)lib/
-SRCBONUSDIR = bonus_src/
-INCDIRBONUS = bonus_includes/
-OBJDIRBONUS = bonus_obj/
-LIB_DIRBONUS = $(SRCBONUSDIR)lib/
 
 # Add include folders
 CFLAGS	+= -I $(INCDIR) -I $(LIB_DIR)
-CFLAGSBONUS	+= -I $(INCDIRBONUS) -I $(LIB_DIRBONUS)
 
 # Linking stage flags
 LDFLAGS = -L $(LIB_DIR) -lft
-LDFLAGSBONUS = -L $(LIB_DIRBONUS) -lft
 
 # List of source files (add your *.c files here)
 
@@ -54,28 +46,14 @@ SRCS =\
 	$(SRCDIR)mass_fork.c \
 	$(SRCDIR)exec_ve.c \
 
-SRCSBONUS =\
-	$(SRCBONUSDIR)free.c \
-	$(SRCBONUSDIR)parse_args.c \
-	$(SRCBONUSDIR)find_cmd.c \
-	$(SRCBONUSDIR)exec_lst.c \
-	$(SRCBONUSDIR)pipex_bonus.c \
-
 HEADERS =\
 	$(INCDIR)libft.h \
 	$(INCDIR)pipex.h \
-
-HEADERSBONUS =\
-	$(INCDIRBONUS)libft.h \
-	$(INCDIRBONUS)pipex_bonus.h \
 
 # String manipulation magic
 SRC			:= $(notdir $(SRCS))
 OBJ			:= $(SRC:.c=.o)
 OBJS		:= $(addprefix $(OBJDIR), $(OBJ))
-SRCBONUS	:= $(notdir $(SRCSBONUS))
-OBJBONUS	:= $(SRCBONUS:.c=.o)
-OBJSBONUS	:= $(addprefix $(OBJDIRBONUS), $(OBJBONUS))
 
 # Colors
 GR	= \033[32;1m
@@ -91,13 +69,8 @@ VPATH :=	$(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
 
 all : $(OBJDIR) $(NAME)
 
-bonus : $(OBJDIRBONUS) $(BONUS)
-
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
-
-$(OBJDIRBONUS):
-	@mkdir -p $(OBJDIRBONUS)
 
 # Compiling
 $(OBJDIR)%.o : %.c $(HEADERS)
@@ -105,27 +78,14 @@ $(OBJDIR)%.o : %.c $(HEADERS)
 	@printf "$(GR)+$(RC)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJDIRBONUS)%.o : %.c $(HEADERSBONUS)
-	@mkdir -p $(OBJDIRBONUS)
-	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGSBONUS) -c $< -o $@
-
 # Linking
 $(NAME): $(OBJS) $(LIB_DIR)libft.a
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRCS)$(RC)\n"
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGS)] &&&\n--- $(NAME)$(RC)\n"
 
-$(BONUS): $(OBJSBONUS) $(LIB_DIRBONUS)libft.a
-	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGSBONUS)] ===\n--- $(SRCSBONUS)$(RC)\n"
-	@$(CC) $(CFLAGSBONUS) $(OBJSBONUS) $(LDFLAGSBONUS) -o $(BONUS)
-	@printf "$(YE)&&& Linked [$(CC) $(LDFLAGSBONUS)] &&&\n--- $(BONUS)$(RC)\n"
-
 $(LIB_DIR)libft.a:
 	@make -C $(LIB_DIR)
-
-$(LIB_DIRBONUS)libft.a:
-	@make -C $(LIB_DIRBONUS)
 
 # Cleaning
 clean :
@@ -133,25 +93,13 @@ clean :
 	@printf "$(RE)--- Removing $(OBJDIR)$(RC)\n"
 	@rm -rf $(OBJDIR)
 
-cleanbonus :
-	@make -C $(LIB_DIRBONUS) clean
-	@printf "$(RE)--- Removing $(OBJDIRBONUS)$(RC)\n"
-	@rm -rf $(OBJDIRBONUS)
-
 fclean : clean
 	@make -C $(LIB_DIR) fclean
 	@printf "$(RE)--- Removing $(NAME)$(RC)\n"
 	@rm -f $(NAME)
 
-fcleanbonus : cleanbonus
-	@make -C $(LIB_DIRBONUS) fclean
-	@printf "$(RE)--- Removing $(BONUS)$(RC)\n"
-	@rm -f $(BONUS)
-
 # Special rule to force to remake everything
 re : fclean all
-
-rebonus : fcleanbonus bonus
 
 # This runs the program
 run : $(NAME)
@@ -163,9 +111,5 @@ norm :
 	@printf "$(CY)=== Checking norm ===$(RC)\n"
 	@norminette $(SRCDIR) $(HEADERS)
 
-normbonus :
-	@printf "$(CY)=== Checking norm ===$(RC)\n"
-	@norminette $(SRCBONUSDIR) $(HEADERSBONUS)
-
 # This specifies the rules that does not correspond to any filename
-.PHONY: all run clean fclean re $(LIBFT) norm bonus cleanbonus fcleanbonus rebonus normbonus
+.PHONY: all run clean fclean re $(LIBFT) norm
