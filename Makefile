@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/09 09:03:42 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/09 11:10:40 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,11 @@ SRCS =\
 	$(SRCDIR)find_cmd.c \
 	$(SRCDIR)mass_pipe.c \
 	$(SRCDIR)mass_fork.c \
-	$(SRCDIR)exec_ve.c \
+	$(SRCDIR)child_exec.c \
+	$(SRCDIR)child1_exec.c \
+	$(SRCDIR)child2_exec.c \
 	$(SRCDIR)build_cmd.c \
+	$(SRCDIR)mass_wait.c \
 
 HEADERS =\
 	$(INCDIR)libft.h \
