@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:51:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 14:53:27 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:26:09 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	build_between(t_cmd **head, int argc, char **argv, char **envp)
 	int		i;
 
 	i = 2;
-	while (++i < argc - 3)
+	while (++i < argc - 2)
 	{
 		cmd = malloc(sizeof(t_cmd));
 		if (!cmd)
