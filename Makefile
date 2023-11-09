@@ -6,7 +6,7 @@
 #    By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 16:28:22 by osarsari          #+#    #+#              #
-#    Updated: 2023/11/08 18:51:43 by osarsari         ###   ########.fr        #
+#    Updated: 2023/11/09 09:03:42 by osarsari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,17 @@ CFLAGS	= -Wall -Werror -Wextra
 
 # Debug, use with`make DEBUG=1`
 ifeq ($(DEBUG),1)
+CFLAGS	+= -g3
+endif
+
+# Debug, use with`make SANITIZE=1`
+ifeq ($(SANITIZE),1)
 CFLAGS	+= -g3 -fsanitize=address
+endif
+
+# Threaded, use with`make THREADS=1`
+ifeq ($(THREADS),1)
+CFLAGS	+= -g3 -pthread
 endif
 
 # Folder names

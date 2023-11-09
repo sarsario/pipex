@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:51:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 08:23:29 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:33:35 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	build_between(t_cmd *head, int argc, char **argv, char **envp)
 	return (1);
 }
 
-int	build_tail(t_cmd *head, int argc, char **argv, char **envp)
+int	build_tail(t_cmd **head, int argc, char **argv, char **envp)
 {
 	t_cmd	*tail;
 
@@ -88,9 +88,7 @@ int	build_tail(t_cmd *head, int argc, char **argv, char **envp)
 	}
 	tail->envp = envp;
 	tail->next = NULL;
-	while (head)
-		head = head->next;
-	head = tail;
+	(*head)->next = tail;
 	return (1);
 }
 
@@ -107,7 +105,7 @@ t_cmd	*build_cmd(int argc, char **argv, char **envp)
 		errno = ENOMEM;
 		return (NULL);
 	}
-	if (!build_tail(head, argc, argv, envp))
+	if (!build_tail(&head, argc, argv, envp))
 	{
 		free_cmds(head);
 		return (NULL);
