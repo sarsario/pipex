@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:40:47 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 11:07:43 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:02:00 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	mass_fork(t_cmd *head, int **pipes, int n)
 		i++;
 		head = head->next;
 	}
-	status = mass_wait(pids, n);
+	status = mass_wait(pids, pipes, n);
 	free(pids);
 	return (status);
 }
