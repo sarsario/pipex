@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:18:06 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 14:32:58 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:12:51 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	**abort_mass_pipe(int **pipes, int i)
 	free(pipes);
 	return (NULL);
 }
+
 int	**mass_pipe(int n)
 {
 	int	**pipes;

@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:36:15 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/08 18:54:05 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:13:36 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 		perror("argc");
 		return (1);
 	}
-	cmds = build_cmd(argv, envp);
+	cmds = build_cmd(argc, argv, envp);
 	if (!cmds)
 	{
 		perror("build_cmd");
