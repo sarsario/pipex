@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:51:21 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 09:28:34 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:53:27 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,29 @@ t_cmd	*build_head(char **argv, char **envp)
 	return (head);
 }
 
+void	cmd_addback(t_cmd **head, t_cmd *new)
+{
+	t_cmd	*last;
+
+	if (!*head)
+	{
+		*head = new;
+		return ;
+	}
+	last = *head;
+	while (last->next)
+		last = last->next;
+	last->next = new;
+}
+
 int	build_between(t_cmd **head, int argc, char **argv, char **envp)
 {
 	t_cmd	*cmd;
-	t_cmd	*next;
 	int		i;
 
 	i = 2;
-	next = *head;
 	while (++i < argc - 3)
 	{
-		next = next->next;
 		cmd = malloc(sizeof(t_cmd));
 		if (!cmd)
 			return (0);
@@ -61,7 +73,7 @@ int	build_between(t_cmd **head, int argc, char **argv, char **envp)
 		cmd->redir_out = NULL;
 		cmd->envp = envp;
 		cmd->next = NULL;
-		next = cmd;
+		cmd_addback(head, cmd);
 	}
 	return (1);
 }
@@ -88,7 +100,7 @@ int	build_tail(t_cmd **head, int argc, char **argv, char **envp)
 	}
 	tail->envp = envp;
 	tail->next = NULL;
-	(*head)->next = tail;
+	cmd_addback(head, tail);
 	return (1);
 }
 

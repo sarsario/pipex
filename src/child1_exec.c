@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:16:03 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 11:11:51 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:35:48 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ static int	try_close_unused(int **pipes, int i, int n)
 	j = 0;
 	while (j < n - 1)
 	{
-		if (j == i && close(pipes[j][0]) == -1)
-			return (0);
+		if (j == i)
+		{
+			if (close(pipes[j][0]) == -1)
+				return (0);
+		}
 		else
 		{
 			if (close(pipes[j][0]) == -1)
@@ -45,7 +48,7 @@ int	child1_exec(t_cmd *cmd, int **pipefd, int i, int n)
 	char	*cmd_path;
 	int		fd_in;
 
-	ft_putstr_fd("child1\n", 1);
+	dprintf(2, "child1_exec: child[%i]\n", i);
 	if (!try_close_unused(pipefd, i, n))
 		return (1);
 	fd_in = open(cmd->redir_in[0], O_RDONLY);

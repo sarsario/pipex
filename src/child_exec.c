@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:51:10 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 11:12:20 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:31 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ static int	try_close_unused(int **pipes, int i, int n)
 	j = 0;
 	while (j < n - 1)
 	{
-		if (j == i - 1 && close(pipes[j][1]) == -1)
-			return (0);
-		else if (j == i && close(pipes[j][0]) == -1)
-			return (0);
+		if (j == i - 1)
+		{
+			if (close(pipes[j][1]) == -1)
+				return (0);
+		}
+		else if (j == i)
+		{
+			if (close(pipes[j][0]) == -1)
+				return (0);
+		}
 		else
 		{
 			if (close(pipes[j][0]) == -1)
@@ -49,11 +55,12 @@ int	child_exec(t_cmd *cmd, int **pipes, int i, int n)
 	int		fd_in;
 	int		fd_out;
 
+	dprintf(2, "child_exec: i: %i | n: %i\n", i, n);
 	if (i == 0)
 		return (child1_exec(cmd, pipes, i, n));
 	if (i == n - 1)
 		return (child2_exec(cmd, pipes, i, n));
-	ft_putstr_fd("child n\n", 1);
+	dprintf(2, "child_exec: child[%d]\n", i);
 	if (i < 0 || i > n - 1 || !try_close_unused(pipes, i, n))
 		return (1);
 	fd_in = dup2(pipes[i - 1][0], STDIN_FILENO);

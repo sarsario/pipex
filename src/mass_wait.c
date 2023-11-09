@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:02:30 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 12:02:33 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:31:40 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	mass_close(int **pipes, int n)
 			return (0);
 		i++;
 	}
+	ft_putstr_fd("Main process: pipes closed\n", 2);
 	return (1);
 }
 
@@ -38,6 +39,7 @@ int	mass_wait(int *pids, int **pipes, int n)
 	i = 0;
 	while (i < n)
 	{
+		dprintf(2, "waiting for child[%i]\n", i);
 		if (waitpid(pids[i], &res, 0) == -1)
 		{
 			perror("waitpid");
