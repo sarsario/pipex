@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:40:47 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 14:42:53 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:29:34 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	mass_fork(t_cmd *head, int **pipes, int n)
 	i = 0;
 	while (head)
 	{
-		printf("head[%i]->args: %s\n", i, head->args[0]);
-		printf("head[%i]->next: %p\n", i, head->next);
 		pids[i] = fork();
 		if (pids[i] == -1)
 		{

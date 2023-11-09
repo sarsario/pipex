@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:51:10 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:31 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:29:10 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ int	child_exec(t_cmd *cmd, int **pipes, int i, int n)
 	int		fd_in;
 	int		fd_out;
 
-	dprintf(2, "child_exec: i: %i | n: %i\n", i, n);
 	if (i == 0)
 		return (child1_exec(cmd, pipes, i, n));
 	if (i == n - 1)
 		return (child2_exec(cmd, pipes, i, n));
-	dprintf(2, "child_exec: child[%d]\n", i);
 	if (i < 0 || i > n - 1 || !try_close_unused(pipes, i, n))
 		return (1);
 	fd_in = dup2(pipes[i - 1][0], STDIN_FILENO);

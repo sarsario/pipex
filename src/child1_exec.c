@@ -6,7 +6,7 @@
 /*   By: osarsari <osarsari@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:16:03 by osarsari          #+#    #+#             */
-/*   Updated: 2023/11/09 14:35:48 by osarsari         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:32:15 by osarsari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	child1_exec(t_cmd *cmd, int **pipefd, int i, int n)
 	char	*cmd_path;
 	int		fd_in;
 
-	dprintf(2, "child1_exec: child[%i]\n", i);
 	if (!try_close_unused(pipefd, i, n))
 		return (1);
 	fd_in = open(cmd->redir_in[0], O_RDONLY);
